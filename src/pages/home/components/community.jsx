@@ -1,11 +1,8 @@
 import React from 'react';
 import { Link } from '@mui/material';
-import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 
 import Box from '@mui/material/Box';
-
-import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 
 const ListItem = ({ img, title, description, buttonText, link }) => {

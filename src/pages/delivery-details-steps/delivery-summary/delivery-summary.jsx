@@ -29,7 +29,6 @@ import Box from '@mui/material/Box';
 import CircularProgress from '@mui/material/CircularProgress';
 import OrderView from '../../../features/order-view/orderView';
 import PaymentLoader from '../../../components/payment-loader/PaymentLoader';
-import { sendToken } from '../../../redux/generalReducer';
 
 const Container = styled.div`
 	display: flex;
@@ -268,14 +267,13 @@ const DeliverySummary = ({ decreaseStep }) => {
 	const [isCompletedModalOpen, toggleCompletedModal] = React.useState(false);
 	const [isTippedModalOpen, toggleTippedModal] = React.useState(false);
 	const navigate = useNavigate();
-	const { webToken } = useSelector((state) => state.general);
 	const dispatch = useDispatch();
 	const [show, setShow] = React.useState(false);
 
 	const getWeight = () => {
 		let weight = 0;
 
-		items.map((item, index) => {
+		items.forEach((item, index) => {
 			weight += parseFloat(item.weight);
 		});
 
@@ -294,7 +292,7 @@ const DeliverySummary = ({ decreaseStep }) => {
 			type: 'delivery',
 			deliveryWeight: getWeight(),
 		};
-		let cost = 0;
+
 		try {
 			const res = await dispatch(getCostBreakdown(data)).unwrap();
 			// handle result here
@@ -307,69 +305,23 @@ const DeliverySummary = ({ decreaseStep }) => {
 			console.error(err);
 		}
 	};
-	useEffect(() => {
-		getCost();
-		let timer1 = setTimeout(() => setShow(true), 9000);
-		let timer2 = setTimeout(() => toggleCompletedModal(true), 20000);
+	useEffect(
+		() => {
+			getCost();
+			let timer1 = setTimeout(() => setShow(true), 9000);
+			let timer2 = setTimeout(() => toggleCompletedModal(true), 20000);
 
-		// this will clear Timeout
-		// when component unmount like in willComponentUnmount
-		// and show will not change to true
-		return () => {
-			clearTimeout(timer1);
-			clearTimeout(timer2);
-		};
-	}, [cost]);
-
-	const handleProceed = async () => {
-		//toggleAuthModal(true);
-
-		const data = {
-			pickupCordinates: {
-				longitude: packageLocation.lng + '',
-				latitude: packageLocation.lat + '',
-			},
-			destinationCordinates: {
-				longitude: packageDestination.lng + '',
-				latitude: packageDestination.lat + '',
-			},
-			price:
-				parseFloat(deliveryBreakdown?.deliveryCost) +
-				parseFloat(deliveryBreakdown?.serviceCharge),
-		};
-
-		let submit = {
-			data,
-			id: currentDelivery.id,
-		};
-
-		const transactionData = {
-			deliveryAmount: deliveryBreakdown?.deliveryCost,
-			totalAmount: deliveryBreakdown?.deliveryCost,
-			type: 'delivery',
-			deliveryId: currentDelivery?.id,
-		};
-		try {
-			const res = await dispatch(submitDelivery(submit)).unwrap();
-			// handle result here
-			console.log(res);
-			if (res.status == 'success') {
-				const transactionres = await dispatch(
-					initializeTransaction(transactionData)
-				).unwrap();
-
-				if (transactionres.status == 'success') {
-					dispatch(setSubmitDeliveryLoading('succeeded'));
-					dispatch(setTransactionPayload(transactionres.data));
-					dispatch(setPaymentModal(true));
-					//navigate("/payment");
-				}
-			}
-		} catch (err) {
-			// handle error here
-			console.error(err);
-		}
-	};
+			// this will clear Timeout
+			// when component unmount like in willComponentUnmount
+			// and show will not change to true
+			return () => {
+				clearTimeout(timer1);
+				clearTimeout(timer2);
+			};
+		},
+		// eslint-disable-next-line
+		[cost]
+	);
 
 	return (
 		<>

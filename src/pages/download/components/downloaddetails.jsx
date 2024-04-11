@@ -60,6 +60,7 @@ const Downloaddetails = () => {
 						md={6}
 					>
 						<img
+							alt={'official-link'}
 							style={{ width: '50%' }}
 							src='images/boukofficials-biolink.png'
 						/>

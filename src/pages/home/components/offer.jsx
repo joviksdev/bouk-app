@@ -7,7 +7,6 @@ import Box from '@mui/material/Box';
 
 import Typography from '@mui/material/Typography';
 
-import Grid from '@mui/material/Grid';
 import ColorButton from '../../../components/Button';
 import { Link } from '@mui/material';
 

@@ -22,7 +22,6 @@ const CheckoutForm = ({ increaseStep, from, closeModal }) => {
 	const [processing, setProcessing] = useState('');
 	const [disabled, setDisabled] = useState(true);
 	const [message, setMessage] = useState(null);
-	const [isLoading, setIsLoading] = useState(false);
 	let clientSecret = transactionPayload.clientSecret;
 
 	// const options = {
@@ -73,7 +72,7 @@ const CheckoutForm = ({ increaseStep, from, closeModal }) => {
 				console.log(err);
 			});
 		console.log(message);
-	}, [stripe]);
+	}, [stripe, clientSecret, currentUser]);
 	const cardStyle = {
 		style: {
 			base: {

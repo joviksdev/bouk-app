@@ -368,6 +368,7 @@ export default function AboutUs() {
 								style={{ width: '80%', height: 'auto', borderRadius: '8px' }}
 								// src="images/about2.jpg"
 								src='images/about1.jpg'
+								alt='about-us'
 							/>
 						</ImageContainer>
 					</Customers>
@@ -379,6 +380,7 @@ export default function AboutUs() {
 								style={{ width: '60%', height: 'auto', borderRadius: '8px' }}
 								// src="images/about1.jpg"
 								src='images/about2.jpg'
+								alt='about'
 							/>
 						</ImageContainer>
 						<RightSection>
@@ -415,6 +417,7 @@ export default function AboutUs() {
 							<img
 								style={{ width: '60%', height: 'auto', borderRadius: '8px' }}
 								src='images/about3.jpg'
+								alt='about-us'
 							/>
 						</ImageContainer>
 					</Customers>

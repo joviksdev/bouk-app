@@ -1,4 +1,4 @@
-import { publicRequest, userRequest } from '../requestMethods';
+import { userRequest } from '../requestMethods';
 
 const getOrders = async () => {
 	return userRequest.get(`customer/order`);

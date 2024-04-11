@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import DrawerAppBar from '../components/Navbar';
 import Typography from '@mui/material/Typography';
@@ -20,7 +20,7 @@ import Footer from '../components/Footer';
 import ColorButton from '../components/Button';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { useJsApiLoader, GoogleMap } from '@react-google-maps/api';
+import { useJsApiLoader } from '@react-google-maps/api';
 
 import {
 	setpickUpValue,
@@ -39,27 +39,7 @@ import Cta from './home/components/cta';
 import Partners from './home/components/partners';
 import Offer from './home/components/offer';
 import AuthView from '../features/auth-view/auth-view';
-const data = [
-	{
-		question: 'How do I make payment on Bouk? ',
-		answer:
-			'After entering your request details, your card details will be requested to enable and confirm payment. ',
-	},
-	{
-		question:
-			'Can I request a pick-up and delivery without shopping through bouk?',
-		answer:
-			'Yes, you can request pick up and delivery without shopping on our platforms.',
-	},
-	{
-		question: 'How do I receive payment?',
-		answer: 'Bouk will make payments weekly to your provided account.',
-	},
-	{
-		question: 'Does bouk use third party navigations?',
-		answer: 'Yes, bouk drivers use third party navigations like google map.',
-	},
-];
+
 const styles = {
 	heroContainer: {
 		backgroundImage: `url(${'images/background2.png'})`,
@@ -100,19 +80,6 @@ React.state = {
 	buttonText: 'Send Message',
 };
 
-function loadScript(src, position, id) {
-	if (!position) {
-		return;
-	}
-
-	const script = document.createElement('script');
-	script.setAttribute('async', '');
-	script.setAttribute('id', id);
-	script.src = src;
-	position.appendChild(script);
-}
-
-const GOOGLE_MAPS_API_KEY = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
 const autocompleteService = { current: null };
 const libraries = ['places'];
 const HomePage = () => {
@@ -155,79 +122,88 @@ const HomePage = () => {
 		[]
 	);
 
-	React.useEffect(() => {
-		let active = true;
+	React.useEffect(
+		() => {
+			let active = true;
 
-		if (!autocompleteService.current && window.google && isLoaded) {
-			autocompleteService.current =
-				new window.google.maps.places.AutocompleteService();
-		}
-		if (!autocompleteService.current) {
-			return undefined;
-		}
-		if (pickupinputValue === '') {
-			dispatch(setPickupOptions(pickupvalue ? [pickupvalue] : []));
-			return undefined;
-		}
-
-		fetch({ input: pickupinputValue }, (results) => {
-			if (active) {
-				let newOptions = [];
-
-				if (pickupvalue) {
-					newOptions = [pickupvalue];
-				}
-
-				if (results) {
-					newOptions = [...newOptions, ...results];
-				}
-
-				dispatch(setPickupOptions(newOptions));
+			if (!autocompleteService.current && window.google && isLoaded) {
+				autocompleteService.current =
+					new window.google.maps.places.AutocompleteService();
 			}
-		});
-
-		return () => {
-			active = false;
-		};
-	}, [pickupvalue, pickupinputValue, fetch]);
-
-	React.useEffect(() => {
-		let active = true;
-
-		if (!autocompleteService.current && window.google && isLoaded) {
-			autocompleteService.current =
-				new window.google.maps.places.AutocompleteService();
-		}
-
-		if (!autocompleteService.current) {
-			return undefined;
-		}
-
-		if (deliverinputValue === '') {
-			dispatch(setdeliverOptions(delivervalue ? [delivervalue] : []));
-			return undefined;
-		}
-
-		fetch({ input: deliverinputValue }, (results) => {
-			if (active) {
-				let newOptions = [];
-
-				if (delivervalue) {
-					newOptions = [delivervalue];
-				}
-
-				if (results) {
-					newOptions = [...newOptions, ...results];
-				}
-
-				dispatch(setdeliverOptions(newOptions));
+			if (!autocompleteService.current) {
+				return undefined;
 			}
-		});
+			if (pickupinputValue === '') {
+				dispatch(setPickupOptions(pickupvalue ? [pickupvalue] : []));
+				return undefined;
+			}
 
-		return () => {
-			active = false;
-		};
-	}, [delivervalue, deliverinputValue, fetch]);
+			fetch({ input: pickupinputValue }, (results) => {
+				if (active) {
+					let newOptions = [];
+
+					if (pickupvalue) {
+						newOptions = [pickupvalue];
+					}
+
+					if (results) {
+						newOptions = [...newOptions, ...results];
+					}
+
+					dispatch(setPickupOptions(newOptions));
+				}
+			});
+
+			return () => {
+				active = false;
+			};
+		},
+		// eslint-disable-next-line
+		[pickupvalue, pickupinputValue, fetch]
+	);
+
+	React.useEffect(
+		() => {
+			let active = true;
+
+			if (!autocompleteService.current && window.google && isLoaded) {
+				autocompleteService.current =
+					new window.google.maps.places.AutocompleteService();
+			}
+
+			if (!autocompleteService.current) {
+				return undefined;
+			}
+
+			if (deliverinputValue === '') {
+				dispatch(setdeliverOptions(delivervalue ? [delivervalue] : []));
+				return undefined;
+			}
+
+			fetch({ input: deliverinputValue }, (results) => {
+				if (active) {
+					let newOptions = [];
+
+					if (delivervalue) {
+						newOptions = [delivervalue];
+					}
+
+					if (results) {
+						newOptions = [...newOptions, ...results];
+					}
+
+					dispatch(setdeliverOptions(newOptions));
+				}
+			});
+
+			return () => {
+				active = false;
+			};
+		},
+		// eslint-disable-next-line
+
+		[delivervalue, deliverinputValue, fetch]
+	);
 	if (!isLoaded) return '';
 
 	const handleNavigate = () =>

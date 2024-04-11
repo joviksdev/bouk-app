@@ -20,16 +20,14 @@ import AuthView from '../features/auth-view/auth-view';
 
 import Menu from '@mui/material/Menu';
 
-import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
+
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
+
 import { logout, setUser } from '../redux/authSlice';
 import { setProfile } from '../redux/profileSlice';
 const drawerWidth = 240;
-const navItems = ['Home', 'About', 'Contact'];
 
 const StyledHeader = styled.div`
 	display: flex;
@@ -119,6 +117,7 @@ function DrawerAppBar(props) {
 				<img
 					style={{ width: '100px' }}
 					src='images/whatsapp-image-2021-05-30-at-12-52@2x.png'
+					alt='img'
 				/>
 			</Typography>
 			<Divider />
@@ -172,6 +171,7 @@ function DrawerAppBar(props) {
 							<img
 								style={{ width: '100px' }}
 								src='images/whatsapp-image-2021-05-30-at-12-52@2x.png'
+								alt='img'
 							/>
 						</Link>
 					</IconButton>

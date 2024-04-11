@@ -15,8 +15,6 @@ import Box from '@mui/material/Box';
 
 import Typography from '@mui/material/Typography';
 
-import Chip from '@mui/material/Chip';
-import mapStyles from './mapStyles';
 import {
 	GoogleMap,
 	Marker,
@@ -49,26 +47,12 @@ import {
 
 import { useDispatch, useSelector } from 'react-redux';
 
-const GOOGLE_MAPS_API_KEY = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
 const autocompleteService = { current: null };
 
 const libraries = ['places'];
-const mapContainerStyle = {
-	height: '100vh',
-	width: '100vw',
-};
-const options = {
-	styles: mapStyles,
-	disableDefaultUI: true,
-	zoomControl: true,
-};
-const center = {
-	lat: 43.6532,
-	lng: -79.3832,
-};
 
 const PickupDeliveryDetails = ({ increaseStep }) => {
-	const { isLoaded, loadError } = useJsApiLoader({
+	const { isLoaded } = useJsApiLoader({
 		googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
 		libraries: libraries,
 	});
@@ -221,83 +205,98 @@ const PickupDeliveryDetails = ({ increaseStep }) => {
 		[pickupData, statePickupData]
 	);
 
-	React.useEffect(() => {
-		let active = true;
+	React.useEffect(
+		() => {
+			let active = true;
 
-		if (!autocompleteService.current && window.google && isLoaded) {
-			autocompleteService.current =
-				new window.google.maps.places.AutocompleteService();
-		}
-		if (!autocompleteService.current) {
-			return undefined;
-		}
-
-		if (pickupinputValue === '') {
-			dispatch(setPickupOptions(pickupvalue ? [pickupvalue] : []));
-			return undefined;
-		}
-
-		fetch({ input: pickupinputValue }, (results) => {
-			if (active) {
-				let newOptions = [];
-
-				if (pickupvalue) {
-					newOptions = [pickupvalue];
-				}
-
-				if (results) {
-					newOptions = [...newOptions, ...results];
-				}
-
-				dispatch(setPickupOptions(newOptions));
+			if (!autocompleteService.current && window.google && isLoaded) {
+				autocompleteService.current =
+					new window.google.maps.places.AutocompleteService();
 			}
-		});
-
-		return () => {
-			active = false;
-		};
-	}, [pickupvalue, pickupinputValue, fetch]);
-
-	useEffect(() => {
-		if (pickupvalue && delivervalue) fetchDirections();
-	}, [delivervalue, pickupvalue]);
-
-	React.useEffect(() => {
-		let active = true;
-
-		if (!autocompleteService.current && window.google && isLoaded) {
-			autocompleteService.current =
-				new window.google.maps.places.AutocompleteService();
-		}
-		if (!autocompleteService.current) {
-			return undefined;
-		}
-
-		if (deliverinputValue === '') {
-			dispatch(setdeliverOptions(delivervalue ? [delivervalue] : []));
-			return undefined;
-		}
-
-		fetch({ input: deliverinputValue }, (results) => {
-			if (active) {
-				let newOptions = [];
-
-				if (delivervalue) {
-					newOptions = [delivervalue];
-				}
-
-				if (results) {
-					newOptions = [...newOptions, ...results];
-				}
-
-				dispatch(setdeliverOptions(newOptions));
+			if (!autocompleteService.current) {
+				return undefined;
 			}
-		});
 
-		return () => {
-			active = false;
-		};
-	}, [delivervalue, deliverinputValue, fetch]);
+			if (pickupinputValue === '') {
+				dispatch(setPickupOptions(pickupvalue ? [pickupvalue] : []));
+				return undefined;
+			}
+
+			fetch({ input: pickupinputValue }, (results) => {
+				if (active) {
+					let newOptions = [];
+
+					if (pickupvalue) {
+						newOptions = [pickupvalue];
+					}
+
+					if (results) {
+						newOptions = [...newOptions, ...results];
+					}
+
+					dispatch(setPickupOptions(newOptions));
+				}
+			});
+
+			return () => {
+				active = false;
+			};
+		},
+		// eslint-disable-next-line
+
+		[pickupvalue, pickupinputValue, fetch]
+	);
+
+	useEffect(
+		() => {
+			if (pickupvalue && delivervalue) fetchDirections();
+		},
+		// eslint-disable-next-line
+
+		[delivervalue, pickupvalue]
+	);
+
+	React.useEffect(
+		() => {
+			let active = true;
+
+			if (!autocompleteService.current && window.google && isLoaded) {
+				autocompleteService.current =
+					new window.google.maps.places.AutocompleteService();
+			}
+			if (!autocompleteService.current) {
+				return undefined;
+			}
+
+			if (deliverinputValue === '') {
+				dispatch(setdeliverOptions(delivervalue ? [delivervalue] : []));
+				return undefined;
+			}
+
+			fetch({ input: deliverinputValue }, (results) => {
+				if (active) {
+					let newOptions = [];
+
+					if (delivervalue) {
+						newOptions = [delivervalue];
+					}
+
+					if (results) {
+						newOptions = [...newOptions, ...results];
+					}
+
+					dispatch(setdeliverOptions(newOptions));
+				}
+			});
+
+			return () => {
+				active = false;
+			};
+		},
+
+		// eslint-disable-next-line
+		[delivervalue, deliverinputValue, fetch]
+	);
 
 	// Handle increase step
 	const handleContinue = () => {
