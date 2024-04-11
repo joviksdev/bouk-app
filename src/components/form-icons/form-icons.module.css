@@ -1,0 +1,12 @@
+.formIcons {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 0;
+}
+.formIcons div {
+	height: 50px;
+	width: 3px;
+	padding: 0;
+	background-color: #e0cfff;
+}

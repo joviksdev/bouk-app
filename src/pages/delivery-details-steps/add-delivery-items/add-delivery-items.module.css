@@ -1,0 +1,79 @@
+.step_container {
+  display: flex;
+  font-family: "Oxygen", sans-serif;
+  padding-bottom: 100px;
+}
+.first {
+  width: 50%;
+  color: #181725;
+  padding: 0 40px;
+}
+.first p {
+  font-family: "Oxygen", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+
+.formContainer {
+  display: flex;
+  gap: 30px;
+}
+
+.inputContainer {
+  width: 100%;
+}
+
+.addItem {
+  background-color: #efe5ff;
+  color: #6438b0;
+  font-weight: 700;
+  padding: 4px 10px;
+  text-align: center;
+  border: none;
+  outline: none;
+  border-radius: 3px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+.back {
+  margin: 25px auto 0;
+  display: flex;
+  justify-content: center;
+}
+.back button {
+  outline: none;
+  border: none;
+  background-color: transparent;
+  color: #3e236e;
+  font-weight: 700;
+  cursor: pointer;
+}
+.second {
+  width: 50%;
+  padding: 0 40px;
+}
+
+.second h2 {
+  font-size: 25px;
+  font-weight: 700;
+  color: #181725;
+  margin-bottom: 20px;
+}
+.item_card_container {
+  display: flex;
+  gap: 10px;
+}
+.empty_state {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+.empty_state span {
+  max-width: 200px;
+  width: 100%;
+  text-align: center;
+}

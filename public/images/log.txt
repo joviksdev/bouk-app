@@ -1,0 +1,69 @@
+2022-04-19T14:15:17.965Z [INFO]: Git SSH Key acquired
+2022-04-19T14:15:18.051Z [INFO]: # Cloning repository: git@gitlab.com:bouk-dev-team/bouk-webapp.git
+2022-04-19T14:15:18.227Z [INFO]: Agent pid 132
+2022-04-19T14:15:18.259Z [INFO]: Identity added: /root/.ssh/git_rsa (/root/.ssh/git_rsa)
+2022-04-19T14:15:18.618Z [INFO]: Cloning into 'bouk-webapp'...
+2022-04-19T14:15:19.034Z [INFO]: Warning: Permanently added the ECDSA host key for IP address '172.65.251.78' to the list of known hosts.
+2022-04-19T14:15:19.945Z [INFO]: # Checking for Git submodules at: /codebuild/output/src046386818/src/bouk-webapp/.gitmodules
+2022-04-19T14:15:19.971Z [INFO]: # Retrieving environment cache...
+2022-04-19T14:15:20.016Z [INFO]: # Retrieved environment cache
+2022-04-19T14:15:20.016Z [INFO]: ---- Setting Up SSM Secrets ----
+2022-04-19T14:15:20.016Z [INFO]: SSM params {"Path":"/amplify/d1qgtox2i2f49q/master/","WithDecryption":true}
+2022-04-19T14:15:20.046Z [WARNING]: !Failed to set up process.env.secrets
+2022-04-19T14:15:20.046Z [INFO]: No live updates for this build run
+2022-04-19T14:15:20.051Z [INFO]: # Retrieving cache...
+2022-04-19T14:15:20.156Z [INFO]: # Extracting cache...
+2022-04-19T14:15:20.164Z [INFO]: # Extraction completed
+2022-04-19T14:15:48.403Z [INFO]: ## Starting Backend Build
+                                 ## Checking for associated backend environment...
+                                 ## No backend environment association found, continuing...
+                                 ## Completed Backend Build
+                                 ## Starting Frontend Build
+                                 # Starting phase: preBuild
+                                 # Executing command: npm ci
+2022-04-19T14:15:49.614Z [WARNING]: npm
+2022-04-19T14:15:49.615Z [WARNING]: ERR! node-pre-gyp not accessible from fsevents
+2022-04-19T14:15:49.641Z [WARNING]: 
+2022-04-19T14:15:49.642Z [WARNING]: npm ERR! A complete log of this run can be found in:
+                                    npm ERR!     /root/.npm/_logs/2022-04-19T14_15_49_615Z-debug.log
+2022-04-19T14:15:49.642Z [HELP]: Outputting the npm debug log
+                                 0 info it worked if it ends with ok
+                                 1 verbose cli [
+                                 1 verbose cli   '/root/.nvm/versions/node/v14.19.0/bin/node',
+                                 1 verbose cli   '/root/.nvm/versions/node/v14.19.0/bin/npm',
+                                 1 verbose cli   'ci'
+                                 1 verbose cli ]
+                                 2 info using npm@6.14.16
+                                 3 info using node@v14.19.0
+                                 4 verbose npm-session 7e502eaee2528993
+                                 5 info prepare initializing installer
+                                 6 verbose prepare starting workers
+                                 7 verbose prepare installation prefix: /codebuild/output/src046386818/src/bouk-webapp
+                                 8 verbose prepare using package-lock.json
+                                 9 verbose checkLock verifying package-lock data
+                                 10 verbose teardown shutting down workers.
+                                 11 info teardown Done in 0s
+                                 12 verbose stack Error: node-pre-gyp not accessible from fsevents
+                                 12 verbose stack     at reqAddr (/root/.nvm/versions/node/v14.19.0/lib/node_modules/npm/node_modules/npm-logical-tree/index.js:159:17)
+                                 12 verbose stack     at /root/.nvm/versions/node/v14.19.0/lib/node_modules/npm/node_modules/npm-logical-tree/index.js:129:22
+                                 12 verbose stack     at Array.forEach (<anonymous>)
+                                 12 verbose stack     at addChild (/root/.nvm/versions/node/v14.19.0/lib/node_modules/npm/node_modules/npm-logical-tree/index.js:128:40)
+                                 12 verbose stack     at /root/.nvm/versions/node/v14.19.0/lib/node_modules/npm/node_modules/npm-logical-tree/index.js:133:7
+                                 12 verbose stack     at Array.forEach (<anonymous>)
+                                 12 verbose stack     at addChild (/root/.nvm/versions/node/v14.19.0/lib/node_modules/npm/node_modules/npm-logical-tree/index.js:128:40)
+                                 12 verbose stack     at /root/.nvm/versions/node/v14.19.0/lib/node_modules/npm/node_modules/npm-logical-tree/index.js:113:5
+                                 12 verbose stack     at Array.forEach (<anonymous>)
+                                 12 verbose stack     at lockTree (/root/.nvm/versions/node/v14.19.0/lib/node_modules/npm/node_modules/npm-logical-tree/index.js:107:5)
+                                 12 verbose stack     at /root/.nvm/versions/node/v14.19.0/lib/node_modules/npm/node_modules/libcipm/index.js:144:21
+                                 13 verbose cwd /codebuild/output/src046386818/src/bouk-webapp
+                                 14 verbose Linux 4.14.246-187.474.amzn2.x86_64
+                                 15 verbose argv "/root/.nvm/versions/node/v14.19.0/bin/node" "/root/.nvm/versions/node/v14.19.0/bin/npm" "ci"
+                                 16 verbose node v14.19.0
+                                 17 verbose npm  v6.14.16
+                                 18 error node-pre-gyp not accessible from fsevents
+                                 19 verbose exit [ 1, true ]
+2022-04-19T14:15:49.646Z [ERROR]: !!! Build failed
+2022-04-19T14:15:49.647Z [ERROR]: !!! Non-Zero Exit Code detected
+2022-04-19T14:15:49.647Z [INFO]: # Starting environment caching...
+2022-04-19T14:15:49.647Z [INFO]: # Environment caching completed
+Terminating logging...

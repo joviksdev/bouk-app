@@ -1,0 +1,38 @@
+.step_container {
+  display: flex;
+  /* font-family: "Roboto", sans-serif; */
+  font-family: "Oxygen", sans-serif;
+  padding-bottom: 50px;
+}
+.first {
+  width: 50%;
+  color: #181725;
+  padding: 0 40px;
+  /* border: 1px solid blue; */
+}
+.first p {
+  font-family: "Oxygen", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+
+.formContainer {
+  display: flex;
+  gap: 30px;
+}
+
+.inputContainer {
+  width: 100%;
+}
+.second {
+  width: 50%;
+  padding: 0 40px;
+}
+
+.second div {
+  border: 1px solid #ddd;
+  height: 100%;
+  display: grid;
+  place-items: center;
+}

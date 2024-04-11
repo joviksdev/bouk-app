@@ -1,0 +1,63 @@
+.stepper_container {
+	display: flex;
+	align-items: center;
+	max-width: 680px;
+	width: 100%;
+	padding: 0 20px;
+	margin: 0 auto;
+	font-family: 'Oxygen', sans-serif;
+}
+.delivery_detail_timeline_item {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	/* width: 100px; */
+}
+.delivery_detail_timeline_item::before {
+	content: attr(data-stage);
+	position: absolute;
+	bottom: -30px;
+	width: 160px;
+	text-align: center;
+	font-weight: 700;
+	transition: all 1.5s ease;
+	white-space: nowrap;
+}
+
+.timeline_divider {
+	height: 2px;
+	width: 100px;
+	flex-shrink: 0;
+	margin: 0 15px;
+	margin-bottom: 7px;
+	transition: all 1s ease;
+}
+
+.unchecked {
+	color: #7c7c7c;
+}
+
+.checked {
+	color: #3e236e;
+}
+
+.active {
+	background-color: #884df0;
+}
+.inactive {
+	background-color: #e0ccff;
+}
+
+@media (min-width: 960px) {
+	.timeline_divider {
+		width: 100px;
+		margin: 0 35px;
+	}
+}
+@media (min-width: 1100px) {
+	.timeline_divider {
+		width: 140px;
+	}
+}
