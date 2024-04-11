@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from '@emotion/styled';
 import { useNavigate } from 'react-router-dom';
-import { Avatar, Typography, Box, Divider, Button } from '@mui/material';
-import { Edit } from '@mui/icons-material';
+import { Typography, Box, Divider } from '@mui/material';
+
 import { getProfile } from '../../../redux/profileSlice';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import UserDetailsWithChangePassword from './components/user-details-with-change-password';
 import Address from '../components/header/address';
 
@@ -14,9 +14,7 @@ const Container = styled(Box)({
 
 const Profile = () => {
 	const navigate = useNavigate();
-	const { profile, addAddressloading, locations } = useSelector(
-		(state) => state.profile
-	);
+
 	const dispatch = useDispatch();
 	const getUser = async () => {
 		const res = await dispatch(getProfile()).unwrap();
