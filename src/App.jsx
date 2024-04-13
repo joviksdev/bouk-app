@@ -32,6 +32,7 @@ import { getTokens } from './messaging_init_in_sw.js';
 import { sendToken } from './redux/generalReducer';
 import { getProfile, setProfile } from './redux/profileSlice.js';
 import { setUser } from './redux/authSlice.js';
+import PrivacyPolicies from './pages/privacy-policies/index.jsx';
 
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE);
 
@@ -137,10 +138,7 @@ const App = () => {
 					path='DriverPrivacyPolicy'
 					element={<PrivacyPolicyforDrivers />}
 				/>
-				<Route
-					path='UserPrivacyPolicy'
-					element={<PrivacyPolicyforusersorCustomers />}
-				/>
+				<Route path='privacy-policies' element={<PrivacyPolicies />} />
 
 				<Route path='delivery-steps' element={<DeliveryDetailsSteps />} />
 				<Route element={<Dashboard />}>

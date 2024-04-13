@@ -289,7 +289,7 @@ const Footer = () => {
 									&nbsp;
 								</Grid>
 								<Grid item xs={12} sm={1.5} md={1.5}>
-									<Link style={{ color: '#C4C4C4' }} to='/UserPrivacyPolicy'>
+									<Link style={{ color: '#C4C4C4' }} to='/privacy-policies'>
 										Privacy Policy for users
 									</Link>{' '}
 								</Grid>
