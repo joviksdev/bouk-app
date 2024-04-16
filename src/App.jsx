@@ -33,6 +33,7 @@ import { sendToken } from './redux/generalReducer';
 import { getProfile, setProfile } from './redux/profileSlice.js';
 import { setUser } from './redux/authSlice.js';
 import PrivacyPolicies from './pages/privacy-policies/index.jsx';
+import TermsAndConditions from './pages/terms-and-conditions/index.jsx';
 
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE);
 
@@ -133,7 +134,7 @@ const App = () => {
 					path='MerchantsSecurityofDataandPrivacyPolicy'
 					element={<BoukMerchantsSecurityofDataandPrivacyPolicy />}
 				/>
-				<Route path='termsandConditions' element={<BOUKtermsandConditions />} />
+				<Route path='terms-and-conditions' element={<TermsAndConditions />} />
 				<Route
 					path='DriverPrivacyPolicy'
 					element={<PrivacyPolicyforDrivers />}

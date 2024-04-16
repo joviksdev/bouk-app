@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setDriverAccepted } from './redux/generalReducer';
 import store from '../src/redux/store.js';
 const firebaseConfig = {
-	apiKey: 'AIzaSyAex8KKL5u14mXeHecCc1FBTKNq7lxFfmQ',
+	apiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
 	authDomain: 'boukaccess-38055.firebaseapp.com',
 	projectId: 'boukaccess-38055',
 	storageBucket: 'boukaccess-38055.appspot.com',

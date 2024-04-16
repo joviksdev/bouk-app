@@ -283,7 +283,7 @@ const Footer = () => {
 									<span style={{ color: '#C4C4C4' }}>© Bouk 2022</span>
 								</Grid>
 								<Grid item xs={12} sm={1.5} md={1.5}>
-									<Link style={{ color: '#C4C4C4' }} to='/termsandConditions'>
+									<Link style={{ color: '#C4C4C4' }} to='/terms-and-conditions'>
 										Terms and Conditions
 									</Link>
 									&nbsp;

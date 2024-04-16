@@ -1,7 +1,7 @@
 import React from 'react';
 
-import DeliveryCards from '../../../assets/delivery-cards.svg';
-import Commerce from '../../../assets/commerce-screen.svg';
+import DeliveryCards from '../../../assets/delivery-cards.png';
+import Commerce from '../../../assets/commerce-screen.png';
 
 import Box from '@mui/material/Box';
 
